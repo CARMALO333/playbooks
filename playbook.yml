@@ -1,14 +1,14 @@
 ---
-- hosts: {{ host }}
+- hosts: "{{ host }}"
   become: true
   tasks:
   - name: "Install {{ package }}"
     yum:
-     name: {{ package }}
+     name: "{{ package }}"
      state: installed
   - name: "Activate service {{ package }}"
     service:
-      name: {{ package }}
+      name: "{{ package }}"
       state: started
       enabled: yes
       
