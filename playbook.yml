@@ -1,13 +1,22 @@
 ---
-- hosts: all
+- hosts: {{ host }}
   become: true
   tasks:
-  - name: Install httpd
+  - name: "Install {{ package }}"
     yum:
-     name: httpd
+     name: {{ package }}
      state: installed
-  - name: Activate httpd
+  - name: "Activate service {{ package }}"
     service:
-      name: httpd
+      name: {{ package }}
       state: started
       enabled: yes
+      
+  - name: "Open Port {{ port }}"
+    firewalld:
+      port: "{{ port }}/tcp"
+      permanent: yes
+      state: enabled
+      permanent: yes
+      state: enabled
+
