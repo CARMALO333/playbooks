@@ -4,7 +4,7 @@
   tasks:
   - name: "Install Firewalld Python"
     yum:
-      name: python-firewalld
+      name: python-firewall
       state: installed
       
   - name: "Install {{ package }}"
