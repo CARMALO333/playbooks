@@ -17,6 +17,5 @@
       port: "{{ port }}/tcp"
       permanent: yes
       state: enabled
-      permanent: yes
-      state: enabled
+
 
