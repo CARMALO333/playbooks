@@ -6,6 +6,17 @@
     yum:
       name: python-firewall
       state: installed
+
+  - name: "Install Firewalld"
+    yum:
+      name: firewalld
+      state: installed
+ 
+  - name: "Start Firewalld"
+    service:
+      name: firewalld
+      state: started
+      enabled: yes
       
   - name: "Install {{ package }}"
     yum:
@@ -17,7 +28,7 @@
       state: started
       enabled: yes
       
-  - name: "Open Port {{ port }}"
+  - name: "Open Port {{ port_tcp }}"
     firewalld:
       port: "{{ port_tcp }}/tcp"
       permanent: yes
