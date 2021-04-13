@@ -2,10 +2,15 @@
 - hosts: all
   become: true
   tasks:
+  - name: "Install Firewalld Python"
+    yum:
+      name: python-firewalld
+      state: installed
+      
   - name: "Install {{ package }}"
     yum:
-     name: "{{ package }}"
-     state: installed
+      name: "{{ package }}"
+      state: installed
   - name: "Activate service {{ package }}"
     service:
       name: "{{ package }}"
