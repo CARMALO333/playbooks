@@ -22,6 +22,7 @@
     yum:
       name: "{{ package }}"
       state: installed
+      
   - name: "Activate service {{ package }}"
     service:
       name: "{{ package }}"
@@ -33,5 +34,12 @@
       port: "{{ port_tcp }}/tcp"
       permanent: yes
       state: enabled
+
+  - name: "Reload Rules"
+    service:
+      name: "firewalld"
+      state: restarted
+      
+ 
 
 
