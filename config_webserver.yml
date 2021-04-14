@@ -5,7 +5,7 @@
   
   - name: "Create user directory"
     file:
-      dest: "/var/www/html/{[ user_path }}"
+      dest: "/var/www/html/{{ user_path }}"
       state: directory
       mode: 0755
       owner: apache
@@ -14,7 +14,7 @@
   - name: "Create index.html"
     copy:
       content: "Directorio Personal del usuario {{ user_path }}"
-      dest: "/var/www/html/{[ user_path }}/index.html"
+      dest: "/var/www/html/{{ user_path }}/index.html"
       mode: 0755
       owner: apache
       group: apache
