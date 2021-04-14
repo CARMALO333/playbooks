@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  
+  - name: "Create user directory"
+    file:
+      dest: "/var/www/html/{[ user_path }}"
+      state: directory
+      mode: 0755
+      owner: apache
+      group: apache
+      
+  - name: "Create index.html"
+    copy:
+      content: "Directorio Personal del usuario {{ user_path }}"
+      dest: "/var/www/html/{[ user_path }}/index.html"
+      mode: 0755
+      owner: apache
+      group: apache
+      
+  - name: Queue build of a project in Jenkins
+    uri:
+      url: http://{{ ansible_hostname }}/{{ user_path }}/index.html
+      method: GET
+      status_code: 200
