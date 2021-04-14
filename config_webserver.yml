@@ -19,7 +19,7 @@
       owner: apache
       group: apache
       
-  - name: Queue build of a project in Jenkins
+  - name: "Test user {{ user_path }} URL "
     uri:
       url: http://{{ ansible_hostname }}/{{ user_path }}/index.html
       method: GET
